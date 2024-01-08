@@ -1,5 +1,6 @@
 import { useState } from "react"
 import Todo from "./Todo"
+import "../styles.css"
 
 function App() {
   const [input, setInput] = useState("")
@@ -19,7 +20,7 @@ function App() {
   const handleCheck = (id) => {
     setTodos((prev) => {
       return prev.map((todo) =>
-        todo.id === id ? { ...todo, checked: !todo.checked } : {...todo}
+        todo.id === id ? { ...todo, checked: !todo.checked } : { ...todo }
       )
     })
   }
@@ -33,25 +34,49 @@ function App() {
     <>
       {todos.map((todo) => {
         return (
-            <Todo
-              key={todo.id}
-              {...todo}
-              handleCheck={() => handleCheck(todo.id)}
-              handleDelete={() => handleDelete(todo.id)}
-            />
-       
+          <Todo
+            key={todo.id}
+            {...todo}
+            handleCheck={() => handleCheck(todo.id)}
+            handleDelete={() => handleDelete(todo.id)}
+          />
         )
       })}
-      <h2>New Todo</h2>
-      <input
-        type="text"
-        name="todo"
-        id="todo"
-        value={input}
-        onChange={(event) => setInput(event.target.value)}
-      />
-      <br />
-      <button onClick={input ? handleAdd : () => {}}>Add Todo Item</button>
+      <h2 style={{ fontFamily: "cursive" }}>New Todo</h2>
+      <div
+        style={{
+          position: "absolute",
+          display: "flex",
+          flexDirection: "column",
+          width: "40%",
+          justifyContent: "center",
+        }}
+      >
+        <input
+          style={{ padding: "3px" }}
+          type="text"
+          name="todo"
+          id="todo"
+          value={input}
+          onChange={(event) => setInput(event.target.value)}
+        />
+        <br />
+        <button
+          style={{
+            position: "relative",
+            top: "-14px",
+            padding: "8px 5px",
+            backgroundColor: "#6B36FF",
+            border: "0",
+            borderRadius: "5px",
+          }}
+          onClick={input ? handleAdd : () => {}}
+        >
+          <span style={{ fontWeight: "900", color: "white" }}>
+            Add Todo Item
+          </span>
+        </button>
+      </div>
     </>
   )
 }
