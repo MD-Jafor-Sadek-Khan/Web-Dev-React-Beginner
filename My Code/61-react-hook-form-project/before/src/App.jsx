@@ -2,7 +2,6 @@ import { FormGroup } from "./FormGroup"
 import ReactSelect from "react-select"
 import { useRef, useState } from "react"
 import "./styles.css"
-import { checkCountry, checkEmail, checkPassword } from "./validators"
 import { useForm, useController } from "react-hook-form"
 
 const COUNTRY_OPTIONS = [
