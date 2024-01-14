@@ -1,6 +1,5 @@
 import { FormGroup } from "./FormGroup"
 import ReactSelect from "react-select"
-import { useRef, useState } from "react"
 import "./styles.css"
 import { useForm, useController } from "react-hook-form"
 
@@ -15,15 +14,14 @@ function App() {
     register,
     handleSubmit,
     formState: { errors },
-    control
+    control,
   } = useForm()
 
-  const { field}= useController({name:"country", control, rules:{required:{value:true, message:"Required"}}})
-  const passwordRef = useRef()
-  const countryRef = useRef()
-
-  const [passwordErrors, setPasswordErrors] = useState([])
-  const [countryErrors, setCountryErrors] = useState([])
+  const { field } = useController({
+    name: "country",
+    control,
+    rules: { required: { value: true, message: "Required" } },
+  })
 
   function onSubmit(data) {
     console.log(data)
