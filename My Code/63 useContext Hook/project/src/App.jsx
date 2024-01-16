@@ -17,7 +17,7 @@ export default function App() {
 
   return (
     <>
-      <ThemeContext.Provider value={{isDarkMode, toggleTheme}}>
+      <ThemeContext.Provider value={{ isDarkMode, toggleTheme }}>
         <Child />
       </ThemeContext.Provider>
       <p>
